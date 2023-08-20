@@ -1,0 +1,14 @@
+<h1>Register</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register" />
+</form>
+<p>
+    DISCLAIMER: registering from here directly adds you as a simple User and you can only view the Vehicles.
+    For further functionality you need a higher privilege account that only the admin can address.
+</p>
+<p>
+    Already have an account? <a href="{% url 'login' %}">Login</a>
+</p>

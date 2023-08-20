@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>Vehicle Detail</h1>
+<dl>
+    <dt>Vehicle Number:</dt>
+    <dd>{{ vehicle.vehicle_number }}</dd>
+
+    <dt>Vehicle Type:</dt>
+    <dd>{{ vehicle.get_vehicle_type_display }}</dd>
+
+    <dt>Vehicle Model:</dt>
+    <dd>{{ vehicle.vehicle_model }}</dd>
+
+    <dt>Vehicle Description:</dt>
+    <dd>{{ vehicle.vehicle_description }}</dd>
+</dl>
+<a href="{% url 'vehicle-update' vehicle.pk %}">Edit</a>
+<a href="{% url 'vehicle-delete' vehicle.pk %}">Delete</a>
+<a href="{% url 'vehicle_list' %}">Back to the List</a>
+{% endblock %}

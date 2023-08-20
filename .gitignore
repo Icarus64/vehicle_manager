@@ -1,0 +1,13 @@
+
+# Exclude the virtual environment directory
+venv/
+
+# Exclude compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Exclude local development settings
+*.sqlite3
+*.env
+*.pyc

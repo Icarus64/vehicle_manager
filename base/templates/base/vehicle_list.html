@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>Vehicle List</h1>
+
+<a href = "{% url 'vehicle-create' %}"> + Add Vehicle </a>
+<table>
+    {% for vehicle in vehicles %}
+    <tr>
+        <td>{{ vehicle.id }}</td>
+        <td>{{ vehicle }}</td>
+        <td>
+            <a href = "{% url 'vehicle' vehicle.id %}">
+                View
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'vehicle-update' vehicle.id %}">
+                Edit
+            </a>
+        </td>
+    </tr>
+    {% empty %}
+    <p>No Vehicles here</p>
+    {% endfor %}
+</table>
+{% endblock %}

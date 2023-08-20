@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>403: Forbidden</h1>
+<p>
+    The action you just perfomed is restricted for your account privilege. 
+    Please contact your Admin or Super Admin to either perfrom the action to change your account privileges.
+    <a href = "{% url 'vehicle_list' %}">
+        Back to the list
+    </a>
+ </p>
+{% endblock %}
