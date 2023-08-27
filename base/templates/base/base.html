@@ -3,19 +3,223 @@
 <html>
     <head>
         <title>Vehicle Manager</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Roboto+Mono&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Roboto+Mono:wght@400;500&display=swap"
+            rel="stylesheet">
+        <style>
+            @media (max-width: 425px) {
+                body {
+                    background-color: black;
+                }
+            }
+
+            body{
+                background-color: #2b5cbe;
+                padding-top: 50px;
+                font-family: 'Nunito', sans-serif;
+                font-family: 'Roboto Mono', monospace;
+                padding-top: 3%;
+                color: #162597;
+            }
+
+            input[type=text],
+            input[type=password],
+            textarea {
+                border: 1px solid #162597;
+                border-radius: 5px;
+                padding: 10px;
+                width: 90%;
+            }
+            
+            input[type=button],
+            input[type=submit] {
+                text-decoration: none;
+                border: 5px solid #c8cb26;
+                background-color: #162597;
+                color: #c8cb26;
+                padding: 10px;
+                font-size: 14px;
+                border-radius: 5px;
+                cursor: pointer;
+                
+            }
+
+            label {
+                padding-top: 10px !important;
+                display: block;
+            }
+
+
+            .title {
+                font-family: 'Nunito', sans-serif;
+                font-family: 'Roboto Mono', monospace;
+                text-align: center;
+            }
+
+            .options{
+                color: #c8cb26;
+                text-decoration: none;
+                border: solid;
+                border-radius: 0 0 5px 5px;
+                padding: 4px;
+                background: linear-gradient(0deg, #4552b5 0%, #333f9e 43%, #162597 100%);
+            }
+
+            .options:hover {
+                color: #162597;
+                text-decoration: none;
+                border: solid;
+                border-radius: 0 0 5px 5px;
+                padding: 4px;
+                background: #c8cb26;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                color: #fff;
+                padding: 5px;
+                margin: 0;
+                border: 5px solid #c8cb26;
+                border-radius: 5px 5px 0 0;
+                background: linear-gradient(90deg, #4552b5 0%, #333f9e 43%, #162597 100%);
+            }
+
+
+            .header a {
+                color: #FAFAFA;
+                text-decoration: none;
+                padding: 5px;
+                border: 5px groove #c8cb26;
+                height: fit-content;
+            }
+
+            .header a:hover {
+                color: #162597;
+                text-decoration: none;
+                border: solid;
+                padding: 4px;
+                font-size: 17px;
+                border: 5px solid #a60f0f;
+                background: #c8cb26;
+            }
+
+            .footer {
+                background: linear-gradient(90deg, #4552b5 0%, #333f9e 43%, #162597 100%);
+                padding-left: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin: 0;
+                margin-top: 20px;
+                border: 5px solid #c8cb26;
+                /* height: 40px; */
+            }
+
+            .footer a {
+                color: #FAFAFA;
+                text-decoration: none;
+                padding: 3px;
+                margin-top: 5px;
+                height: fit-content;
+            }
+
+            .footer a:hover {
+                color: #162597;
+                text-decoration: none;
+                border: solid;
+                padding: 3px;
+                background: #c8cb26;
+            }
+
+            .container {
+                margin: auto;
+                max-width: 650px;
+                border-radius: 5px;
+                background-color: #fff;
+                padding: 5px;
+                -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.51);
+                box-shadow:  2px 2px 13px -4px rgba(0, 0, 0, 0.51);
+            }
+            
+            .row-wrapper {
+                display: grid;
+                width: 90%;
+                margin: auto;
+                margin-top: 25px;
+                grid-template-columns: 10% 25% 35% 30%;
+                grid-gap: 30px 10px;
+            }
+
+            .options-wrapper {
+                display: flex;
+                /* align-items: center; */
+                justify-content: space-between;
+                /* padding: 30px; */
+                background-color: #fff;
+                border-top: 1px solid rgb(226, 226, 226);
+            }
+
+            .list-head {
+                font-weight: bold;
+                
+            }
+
+            .options-wrapper-alt {
+                display: none;
+            }
+
+            
+        </style>
     </head>
     <body>
-        {% if request.user.is_authenticated %}
-        <p>{{request.user}}</p>
-        <a href="{% url 'logout' %}">Log out</a>
         
-        {% else %}
-        <a href="{% url 'login' %}">Log in</a>
-        {% endif %}
-        <hr />
+        <div class = "container">   
+            <div class = "header">
+                {% if request.user.is_authenticated %}
+                <span style="display: flex;">
+                    <h4>Logged in as, &nbsp;</h4>
+                    <h3>{{request.user}}</h3>
+                </span>
+                <a href="{% url 'logout' %}">Log out</a>
+                
+                {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                {% endif %}
+            </div>
 
-        {% block content %}
-        
-        {% endblock %}
+            <h1 class="title">Vehicle Manager</h1>
+            
+            {% block content %}
+            
+            {% endblock content %}
+
+            <div class="footer">
+                <a href="{% url 'vehicle_list' %}">&#8592; Back</a>
+            </div>
+        </div>
+        <script>
+            if(
+                window.location.href.includes("vehicle-list") ||
+                window.location.href.includes("delete")
+            ) {
+                document.querySelector("div[class='footer']").style.display = "none";
+            } else {
+                document.querySelector("div[class='footer']").style.display = "block";
+            }
+
+            if (
+                window.location.href == "http://127.0.0.1:8000/" ||
+                window.location.href.includes('register')
+            ) {
+                document.querySelector("div[class='footer']").style.display = "none";
+                document.querySelector("div[class='header']").style.display = "none";
+            }
+        </script>
     </body>
 </html>

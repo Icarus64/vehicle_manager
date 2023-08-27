@@ -1,13 +1,18 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>Confirm Deletion</h1>
-<p>Are you sure you want to delete the vehicle: {{ vehicle.vehicle_number }}?</p>
+<span> - Confirm Deletion</span>
 
-<form method="post">
+
+<form method="post" style="margin: 20px;">
+    <p>Are you sure you want to delete the vehicle: {{ vehicle.vehicle_number }}?</p>
     {% csrf_token %}
-    <button type="submit">Yes, Delete</button>
+    <div style="width: fit-content; margin: auto;">
+        <button type="submit" class="options" style="font-size: 18px;">Yes, Delete</button>
+        <a class="options" href="{% url 'vehicle_list' %}">No, Cancel</a>
+    </div>
+    
 </form>
-<a href="{% url 'vehicle_list' %}">No, Cancel</a>
+
 
 {% endblock %}

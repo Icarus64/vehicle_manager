@@ -1,9 +1,21 @@
-<h1>Register</h1>
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<span>Register</span>
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Register" />
+    <label>{{form.username.label}}</label>
+    {{form.username}}
+    <label>{{form.password1.label}}</label>
+    {{form.password1}}
+    <label>{{form.password2.label}}</label>
+    {{form.password2}}
+    <div style="width: fit-content; margin: auto;">
+        <input class="options" type="submit" value="Register" style="font-size: 18px;"/>
+    </div>
+    
 </form>
 <p>
     DISCLAIMER: registering from here directly adds you as a simple User and you can only view the Vehicles.
@@ -12,3 +24,5 @@
 <p>
     Already have an account? <a href="{% url 'login' %}">Login</a>
 </p>
+
+{% endblock content %}

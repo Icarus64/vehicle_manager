@@ -1,11 +1,14 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>Update Vehicle</h1>
+<span> &#9998; Update Vehicle</span>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Update</button>
+    <div style="width: fit-content; margin: auto;">
+        <button class="options" type="submit" style="font-size: 18px;">Update</button>
+        <a class="options" href="{% url 'vehicle' vehicle.pk %}">Cancel</a>
+    </div>
 </form>
-<a href="{% url 'vehicle' vehicle.pk %}">Cancel</a>
+
 {% endblock %}

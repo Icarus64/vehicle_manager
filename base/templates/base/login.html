@@ -1,11 +1,18 @@
-<h1>Login</h1>
-<h3>Welcome to the Vehicle manager</h3>
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<span>Login</span>
 <form method = "post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type = "submit" value = "login" />
+    <div style="width: fit-content; margin: auto;">
+        <input class="options" type="submit" value="login" style="font-size: 18px;" />
+    </div>
 </form>
 
 <p>
     Don't have an account? <a href = "{% url 'register' %}">Register</a>
 </p>
+
+{% endblock content %}

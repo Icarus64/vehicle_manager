@@ -1,27 +1,36 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>Vehicle List</h1>
 
-<a href = "{% url 'vehicle-create' %}"> + Add Vehicle </a>
-<table>
+
+<a href = "{% url 'vehicle-create' %}" class="options"> + Add Vehicle </a>
+<div class="row-wrapper" >
+    <div class="list-head">ID</div>
+    <div class="list-head">NUMBER</div>
+    <div class="list-head">MODEL</div>
+    <div class="list-head">OPTIONS</div>
+</div>
     {% for vehicle in vehicles %}
-    <tr>
-        <td>{{ vehicle.id }}</td>
-        <td>{{ vehicle }}</td>
-        <td>
-            <a href = "{% url 'vehicle' vehicle.id %}">
+    <div class="row-wrapper">
+        <div>{{ vehicle.id }}</div>
+        <div>{{ vehicle }}</div>
+        <div>{{ vehicle.vehicle_model }}</div>
+        <div class="options-wrapper">
+            <a href="{% url 'vehicle' vehicle.id %}" class="options">
                 View
             </a>
-        </td>
-        <td>
-            <a href="{% url 'vehicle-update' vehicle.id %}">
+            
+            <a href="{% url 'vehicle-update' vehicle.id %}" class="options">
                 Edit
             </a>
-        </td>
-    </tr>
+
+            <a  class="delete-link options" href="{% url 'vehicle-delete' vehicle.id %}">
+                Delete
+            </a>
+        </div>
+    </div>
     {% empty %}
     <p>No Vehicles here</p>
     {% endfor %}
-</table>
+</div>
 {% endblock %}
